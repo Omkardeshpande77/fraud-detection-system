@@ -1,4 +1,4 @@
-package com.fraudDetect.enums;
+package com.frauddetect.enums;
 
 public enum Currency {
     INR,

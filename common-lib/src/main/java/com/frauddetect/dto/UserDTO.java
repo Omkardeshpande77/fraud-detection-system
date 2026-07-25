@@ -1,4 +1,4 @@
-package com.fraudDetect.dto;
+package com.frauddetect.dto;
 
 public record UserDTO() {
 }

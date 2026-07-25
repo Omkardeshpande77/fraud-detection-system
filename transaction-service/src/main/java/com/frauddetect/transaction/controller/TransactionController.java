@@ -1,9 +1,11 @@
 package com.frauddetect.transaction.controller;
 
+
 import com.frauddetect.transaction.dto.request.TransactionRequest;
-import com.frauddetect.transaction.dto.request.TransactionResponse;
+import com.frauddetect.transaction.dto.response.TransactionResponse;
 import com.frauddetect.transaction.service.TransactionService;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

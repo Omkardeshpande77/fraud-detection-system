@@ -1,11 +1,10 @@
 package com.frauddetect.transaction.entity;
 
-import com.fraudDetect.enums.Currency;
-import com.fraudDetect.enums.PaymentMethod;
-import com.fraudDetect.enums.TransactionStatus;
+import com.frauddetect.enums.Currency;
+import com.frauddetect.enums.PaymentMethod;
+import com.frauddetect.enums.TransactionStatus;
 import jakarta.persistence.*;
 import lombok.*;
-import org.apache.kafka.common.protocol.types.Field;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -51,5 +50,8 @@ public class Transaction extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private TransactionStatus status;
+    @Convert(converter = DoubleArrayJsonConverter.class)
+    @Column(columnDefinition = "TEXT")
+    private double[] features;
 
 }

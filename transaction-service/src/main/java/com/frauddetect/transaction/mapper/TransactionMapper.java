@@ -1,9 +1,9 @@
 package com.frauddetect.transaction.mapper;
 
-import com.fraudDetect.enums.TransactionStatus;
-import com.fraudDetect.events.TransactionCreatedEvent;
+import com.frauddetect.enums.TransactionStatus;
+import com.frauddetect.events.TransactionCreatedEvent;
 import com.frauddetect.transaction.dto.request.TransactionRequest;
-import com.frauddetect.transaction.dto.request.TransactionResponse;
+import com.frauddetect.transaction.dto.response.TransactionResponse;
 import com.frauddetect.transaction.entity.Transaction;
 import org.springframework.stereotype.Component;
 
@@ -58,6 +58,7 @@ public class TransactionMapper {
                 transaction.getCountry(),
                 transaction.getPaymentMethod(),
                 transaction.getStatus(),
+                transaction.getFeatures(),
                 transaction.getCreatedAt()
         );
     }

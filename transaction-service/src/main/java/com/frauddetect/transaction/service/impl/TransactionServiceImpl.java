@@ -1,7 +1,7 @@
 package com.frauddetect.transaction.service.impl;
 
 import com.frauddetect.transaction.dto.request.TransactionRequest;
-import com.frauddetect.transaction.dto.request.TransactionResponse;
+import com.frauddetect.transaction.dto.response.TransactionResponse;
 import com.frauddetect.transaction.entity.Transaction;
 import com.frauddetect.transaction.kafka.producer.TransactionProducer;
 import com.frauddetect.transaction.mapper.TransactionMapper;

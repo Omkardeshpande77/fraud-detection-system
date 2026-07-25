@@ -1,7 +1,7 @@
 package com.frauddetect.fraud.producer;
 
-import com.fraudDetect.events.TransactionCreatedEvent;
-import com.fraudDetect.events.TransactionScoredEvent;
+import com.frauddetect.events.TransactionCreatedEvent;
+import com.frauddetect.events.TransactionScoredEvent;
 import com.frauddetect.fraud.rules.FraudDecision;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

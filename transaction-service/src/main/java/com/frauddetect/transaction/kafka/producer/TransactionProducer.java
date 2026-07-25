@@ -1,6 +1,6 @@
 package com.frauddetect.transaction.kafka.producer;
 
-import com.fraudDetect.events.TransactionCreatedEvent;
+import com.frauddetect.events.TransactionCreatedEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.core.KafkaTemplate;

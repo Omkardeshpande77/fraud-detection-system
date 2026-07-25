@@ -1,6 +1,6 @@
 package com.frauddetect.fraud.rules;
 
-import com.fraudDetect.events.TransactionCreatedEvent;
+import com.frauddetect.events.TransactionCreatedEvent;
 import org.springframework.stereotype.Component;
 
 import java.util.Set;

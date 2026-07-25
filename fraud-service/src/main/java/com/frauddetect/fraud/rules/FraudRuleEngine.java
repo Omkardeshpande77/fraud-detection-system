@@ -1,6 +1,6 @@
 package com.frauddetect.fraud.rules;
 
-import com.fraudDetect.events.TransactionCreatedEvent;
+import com.frauddetect.events.TransactionCreatedEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

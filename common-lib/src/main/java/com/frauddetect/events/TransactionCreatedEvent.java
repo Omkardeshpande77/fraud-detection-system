@@ -1,14 +1,14 @@
-package com.frauddetect.transaction.dto.request;
+package com.frauddetect.events;
 
-import com.fraudDetect.enums.Currency;
-import com.fraudDetect.enums.PaymentMethod;
-import com.fraudDetect.enums.TransactionStatus;
+import com.frauddetect.enums.Currency;
+import com.frauddetect.enums.PaymentMethod;
+import com.frauddetect.enums.TransactionStatus;
 
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.UUID;
 
-public record TransactionResponse(
+public record TransactionCreatedEvent(
         UUID transactionId,
 
         UUID userId,
@@ -28,7 +28,8 @@ public record TransactionResponse(
         PaymentMethod paymentMethod,
 
         TransactionStatus status,
-
+        double[] features,
         Instant createdAt
+
 ) {
 }

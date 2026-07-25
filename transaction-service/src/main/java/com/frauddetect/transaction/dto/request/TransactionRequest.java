@@ -1,7 +1,7 @@
 package com.frauddetect.transaction.dto.request;
 
-import com.fraudDetect.enums.Currency;
-import com.fraudDetect.enums.PaymentMethod;
+import com.frauddetect.enums.Currency;
+import com.frauddetect.enums.PaymentMethod;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -30,6 +30,7 @@ public record TransactionRequest(
         @Size(min = 2, max = 50)
         String country,
         @NotNull
-        PaymentMethod paymentMethod
+        PaymentMethod paymentMethod,
+        double[] features
 ) {
 }

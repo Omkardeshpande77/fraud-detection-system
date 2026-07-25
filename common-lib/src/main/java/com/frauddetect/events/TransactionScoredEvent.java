@@ -1,4 +1,4 @@
-package com.fraudDetect.events;
+package com.frauddetect.events;
 
 import java.time.Instant;
 import java.util.List;

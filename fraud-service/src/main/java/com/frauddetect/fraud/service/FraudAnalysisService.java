@@ -1,6 +1,6 @@
 package com.frauddetect.fraud.service;
 
-import com.fraudDetect.events.TransactionCreatedEvent;
+import com.frauddetect.events.TransactionCreatedEvent;
 import com.frauddetect.fraud.producer.FraudResultProducer;
 import com.frauddetect.fraud.rules.FraudDecision;
 import com.frauddetect.fraud.rules.FraudRuleEngine;

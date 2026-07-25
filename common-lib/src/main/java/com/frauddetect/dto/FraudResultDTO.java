@@ -1,6 +1,6 @@
-package com.fraudDetect.dto;
+package com.frauddetect.dto;
 
-import com.fraudDetect.enums.RiskLevel;
+import com.frauddetect.enums.RiskLevel;
 
 public record FraudResultDTO(
         String transactionId,

@@ -1,4 +1,4 @@
-package com.fraudDetect.events;
+package com.frauddetect.events;
 
 public record FraudDetectedEvent() {
 }

@@ -1,6 +1,6 @@
 package com.frauddetect.fraud.consumer;
 
-import com.fraudDetect.events.TransactionCreatedEvent;
+import com.frauddetect.events.TransactionCreatedEvent;
 import com.frauddetect.fraud.service.FraudAnalysisService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
