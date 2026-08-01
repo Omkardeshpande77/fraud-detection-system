@@ -40,6 +40,19 @@ Instead of blocking transactions synchronously, the system processes them asynch
 
 ---
 
+## Architecture at a Glance
+
+| Layer | Technology |
+|--------|------------|
+| Backend | Spring Boot 3.5 |
+| Language | Java 25 |
+| Messaging | Apache Kafka |
+| Database | PostgreSQL |
+| ML | Python FastAPI |
+| Model | Scikit-Learn |
+| Build | Maven |
+| Containerization | Docker |
+
 # 🚀 Why This Project?
 
 Traditional fraud systems often suffer from:
@@ -165,66 +178,91 @@ Kafka->>NotificationService: Notify User
 
 # 📂 Project Structure
 
-```text
-fraud-detection-platform
-│
-├── common-lib
-│
-├── transaction-service
-│     ├── REST APIs
-│     ├── Transaction Persistence
-│     └── Kafka Producer
-│
-├── fraud-service
-│     ├── Rule Engine
-│     ├── Feature Engineering
-│     ├── ML Integration
-│     ├── Dashboard APIs
-│     └── Kafka Consumer
-│
-├── notification-service
-│     └── Kafka Consumer
-│
-├── ml-scoring-service
-│     ├── FastAPI
-│     └── Machine Learning Model
-│
-├── docker-compose.yml
-└── README.md
+```mermaid
+graph TD
+
+    Project["Fraud Detection Platform"]
+
+    Common["common-lib"]
+
+    Transaction["transaction-service"]
+
+    Fraud["fraud-service"]
+
+    Notification["notification-service"]
+
+    ML["ml-scoring-service"]
+
+    Project --> Common
+
+    Project --> Transaction
+
+    Project --> Fraud
+
+    Project --> Notification
+
+    Project --> ML
 ```
 
 ---
 
 # 🔄 Transaction Lifecycle
 
-```text
-                Client
-                   │
-                   ▼
-        Transaction Service
-                   │
-             Save Transaction
-                   │
-                   ▼
-          Kafka (transactions.created)
-                   │
-                   ▼
-            Fraud Service
-          ┌──────────────────┐
-          │ Rule Engine       │
-          │ Feature Builder   │
-          │ ML Scoring        │
-          └──────────────────┘
-                   │
-                   ▼
-         Fraud Analysis Result
-                   │
-          Kafka (fraud.detected)
-                   │
-                   ▼
-        Notification Service
-```
+```mermaid
+flowchart TD
 
+    A["👤 Client"]
+
+    B["💳 Transaction Service"]
+
+    C[(PostgreSQL)]
+
+    D["📨 Publish TransactionCreatedEvent"]
+
+    E[(Apache Kafka)]
+
+    F["🛡 Fraud Service"]
+
+    G["⚙️ Rule Engine"]
+
+    H["📈 Feature Engineering"]
+
+    I["🤖 ML Scoring Service"]
+
+    J["📊 Fraud Decision"]
+
+    K[(Fraud Database)]
+
+    L["📨 Publish FraudDetectedEvent"]
+
+    M["🔔 Notification Service"]
+
+    A --> B
+
+    B --> C
+
+    B --> D
+
+    D --> E
+
+    E --> F
+
+    F --> G
+
+    G --> H
+
+    H --> I
+
+    I --> J
+
+    J --> K
+
+    J --> L
+
+    L --> E
+
+    E --> M
+```
 ---
 
 # 🧩 Microservices
@@ -308,21 +346,107 @@ The Fraud Service communicates with a dedicated FastAPI service to obtain fraud 
 
 The ML score is combined with the rule engine score to produce the final fraud decision.
 
-```text
-Rule Score
-      │
-      ▼
+```mermaid
+flowchart LR
 
-Machine Learning Score
+    Rule["🛡 Rule Engine"]
 
-      │
-      ▼
+    Features["📈 Feature Engineering"]
 
-Combined Fraud Decision
+    ML["🤖 ML Service"]
+
+    Combine["⚖️ Score Aggregator"]
+
+    Decision["✅ Fraud Decision"]
+
+    Rule --> Combine
+
+    Features --> ML
+
+    ML --> Combine
+
+    Combine --> Decision
 ```
 
 ---
+## Rule Engine Execution
 
+```mermaid
+flowchart TD
+
+    Start["Incoming Transaction"]
+
+    HA["High Amount Rule"]
+
+    HR["High Risk Country"]
+
+    HV["High Velocity"]
+
+    ND["New Device"]
+
+    Score["Calculate Risk Score"]
+
+    Decision["Fraud Decision"]
+
+    Start --> HA
+
+    HA --> HR
+
+    HR --> HV
+
+    HV --> ND
+
+    ND --> Score
+
+    Score --> Decision
+```
+---
+## Feature Engineering Pipeline
+
+```mermaid
+flowchart LR
+
+    Transaction["Transaction"]
+
+    Amount["Amount"]
+
+    Country["Country"]
+
+    Merchant["Merchant Category"]
+
+    Payment["Payment Method"]
+
+    Velocity["Transactions Last Hour"]
+
+    Device["New Device"]
+
+    Vector["Feature Vector"]
+
+    Transaction --> Amount
+
+    Transaction --> Country
+
+    Transaction --> Merchant
+
+    Transaction --> Payment
+
+    Transaction --> Velocity
+
+    Transaction --> Device
+
+    Amount --> Vector
+
+    Country --> Vector
+
+    Merchant --> Vector
+
+    Payment --> Vector
+
+    Velocity --> Vector
+
+    Device --> Vector
+```
+---
 # 🛠 Technology Stack
 
 | Layer            | Technologies          |
