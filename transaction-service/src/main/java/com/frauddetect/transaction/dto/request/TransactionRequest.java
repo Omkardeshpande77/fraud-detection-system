@@ -31,6 +31,7 @@ public record TransactionRequest(
         String country,
         @NotNull
         PaymentMethod paymentMethod,
-        double[] features
+        double[] features,
+        String deviceId
 ) {
 }

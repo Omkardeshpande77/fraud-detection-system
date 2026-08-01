@@ -53,5 +53,7 @@ public class Transaction extends BaseEntity {
     @Convert(converter = DoubleArrayJsonConverter.class)
     @Column(columnDefinition = "TEXT")
     private double[] features;
+    @Column(name = "device_id")
+    private String deviceId;
 
 }

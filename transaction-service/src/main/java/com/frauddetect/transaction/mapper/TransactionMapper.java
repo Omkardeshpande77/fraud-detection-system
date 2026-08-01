@@ -12,9 +12,10 @@ import java.util.UUID;
 @Component
 public class TransactionMapper {
 
-    private TransactionMapper(){}
+    private TransactionMapper() {
+    }
 
-    public  Transaction toEntity(TransactionRequest transactionRequest){
+    public Transaction toEntity(TransactionRequest transactionRequest) {
         Transaction transaction = new Transaction();
         transaction.setTransactionId(UUID.randomUUID());
         transaction.setUserId(transactionRequest.userId());
@@ -26,10 +27,11 @@ public class TransactionMapper {
         transaction.setCountry(transactionRequest.country());
         transaction.setPaymentMethod(transactionRequest.paymentMethod());
         transaction.setStatus(TransactionStatus.PENDING);
+        transaction.setDeviceId(transactionRequest.deviceId());
         return transaction;
     }
 
-    public  TransactionResponse toResponse(Transaction transaction){
+    public TransactionResponse toResponse(Transaction transaction) {
         return new TransactionResponse(
                 transaction.getTransactionId(),
                 transaction.getUserId(),
@@ -40,6 +42,7 @@ public class TransactionMapper {
                 transaction.getMerchantCategory(),
                 transaction.getCountry(),
                 transaction.getPaymentMethod(),
+                transaction.getDeviceId(),
                 transaction.getStatus(),
                 transaction.getCreatedAt()
         );
@@ -57,9 +60,11 @@ public class TransactionMapper {
                 transaction.getMerchantCategory(),
                 transaction.getCountry(),
                 transaction.getPaymentMethod(),
+                transaction.getDeviceId(),
                 transaction.getStatus(),
                 transaction.getFeatures(),
                 transaction.getCreatedAt()
+
         );
     }
 }

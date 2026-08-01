@@ -5,7 +5,20 @@ spring:
 
   application:
     name: notification-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/frauddb
+    username: fraud_user
+    password: fraud_password
 
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+    show-sql: true
+
+    properties:
+      hibernate:
+        format_sql: true
   kafka:
 
     bootstrap-servers: localhost:9092
@@ -27,3 +40,7 @@ spring:
         spring.json.value.default.type: com.frauddetect.events.TransactionScoredEvent
 
         spring.json.trusted.packages: "*"
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

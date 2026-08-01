@@ -20,14 +20,7 @@ public class FraudResultConsumer {
             groupId = "notification-service-group"
     )
     public void consume(TransactionScoredEvent event) {
-
-        log.info("Received Fraud Result {}", event);
-
-        if (event.fraudulent()) {
-
-            notificationService.sendAlert(event);
-
-        }
+        notificationService.process(event);
 
     }
 

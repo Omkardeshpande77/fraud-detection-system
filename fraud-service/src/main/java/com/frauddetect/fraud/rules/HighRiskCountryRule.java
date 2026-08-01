@@ -3,31 +3,30 @@ package com.frauddetect.fraud.rules;
 import com.frauddetect.events.TransactionCreatedEvent;
 import com.frauddetect.fraud.service.FraudRuleConfigService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-import java.util.Set;
 
-@Slf4j
 @Component
 @RequiredArgsConstructor
-public class HighRiskMerchantRule implements FraudRule {
-    private  final FraudRuleConfigService configService;
+public class HighRiskCountryRule implements FraudRule {
+
+    private final FraudRuleConfigService configService;
 
     @Override
     public boolean matches(TransactionCreatedEvent transaction) {
 
-        log.info("Checking if merchant is high-risk: {}", transaction.merchantName());
-        return configService.getRuleValues("HIGH_RISK_MERCHANT").contains(transaction.merchantName());
+        return configService
+                .getRuleValues("HIGH_RISK_COUNTRY")
+                .contains(transaction.country());
     }
 
     @Override
     public String ruleName() {
-        return "HIGH_RISK_MERCHANT";
+        return "HIGH_RISK_COUNTRY";
     }
 
     @Override
     public double score() {
-        return 40.0;
+        return 30.0;
     }
 }

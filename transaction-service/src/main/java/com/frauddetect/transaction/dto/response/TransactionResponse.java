@@ -26,6 +26,7 @@ public record TransactionResponse(
         String country,
 
         PaymentMethod paymentMethod,
+        String deviceId,
 
         TransactionStatus status,
 

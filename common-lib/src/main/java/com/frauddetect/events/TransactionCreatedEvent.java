@@ -27,6 +27,7 @@ public record TransactionCreatedEvent(
 
         PaymentMethod paymentMethod,
 
+        String deviceId,
         TransactionStatus status,
         double[] features,
         Instant createdAt
