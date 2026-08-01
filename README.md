@@ -161,8 +161,6 @@ FraudService->>Kafka: Publish FraudDetectedEvent
 
 Kafka->>NotificationService: Notify User
 ```
-
-Kafka->>NotificationService: Notify User
 ---
 
 # 📂 Project Structure
